@@ -4,5 +4,5 @@ export const request = async <Type>(url: string, init?: RequestInit): Promise<Ty
   if (response.ok) {
     return response.json();
   }
-  throw new Error('Something went wrong!');
+  throw new Error('Something went wrong!' + response.status);
 };
