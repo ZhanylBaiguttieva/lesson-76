@@ -1,13 +1,12 @@
 import crypto from 'crypto';
 import {Router} from 'express';
-
 import fileDb from "./fileDb";
 import {Chat} from "./types";
 
 const messagesRouter = Router();
 messagesRouter.get('/', async (req, res)=>{
-    const products = await fileDb.getItems();
-    res.send(products);
+    const chats = await fileDb.getItems();
+    res.send(chats);
 });
 
 messagesRouter.post('/', async(req, res, next)=>{
