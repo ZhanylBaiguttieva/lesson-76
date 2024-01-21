@@ -15,19 +15,14 @@ const fileDb = {
         }
     },
     async getItems() {
-        return data;
+        return data.slice(-30);
     },
     async addItem(item: Chat) {
-        const now = new Date;
-        const datetime = now.toISOString();
 
-        const id = crypto.randomUUID();
-
-        const chat = {id, datetime,...item};
-        data.push(chat);
+        data.push(item);
         await this.save();
 
-        return chat;
+        return item;
     },
     async save() {
         return fs.writeFile(fileName, JSON.stringify(data));
